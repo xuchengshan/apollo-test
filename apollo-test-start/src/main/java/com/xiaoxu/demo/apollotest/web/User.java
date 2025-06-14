@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xiaoxu.demo.apollotest.demos.web;
+package com.xiaoxu.demo.apollotest.web;
 
 /**
  * @author <a href="mailto:chenxilzx1@gmail.com">theonefx</a>

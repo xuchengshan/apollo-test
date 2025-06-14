@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xiaoxu.demo.apollotest.demos.web;
+package com.xiaoxu.demo.apollotest.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
