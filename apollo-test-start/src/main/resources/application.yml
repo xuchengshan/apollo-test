@@ -10,3 +10,10 @@ apollo:
     eagerLoad:
       enable: true # 是否开启 Apollo 支持日志级别的加载时机。默认为 false。
     namespaces: application # 使用的 Apollo 的命名空间，默认为 application。
+  cacheDir: ./apollo-config # Apollo 配置缓存目录
+  cluster: default # Apollo 集群名称，默认为 default
+  autoUpdateInjectedSpringProperties: true # 自动更新注入的Spring属性
+  refreshInterval: 1000 # 配置刷新间隔，单位毫秒
+
+end:
+

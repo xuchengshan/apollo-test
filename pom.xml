@@ -17,8 +17,6 @@
 
     <modules>
         <module>apollo-test-start</module>
-        <module>apollo-test-web</module>
-        <module>apollo-test-service</module>
     </modules>
 
     <dependencies>
