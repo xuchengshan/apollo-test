@@ -16,17 +16,24 @@
 
 package com.xiaoxu.demo.apollotest.web;
 
+import com.xiaoxu.demo.apollotest.entity.DemoProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author <a href="mailto:chenxilzx1@gmail.com">theonefx</a>
  */
-@Controller
+@RestController
 public class BasicController {
+
+    @Autowired
+    private DemoProperties demoProperties;
 
     // http://127.0.0.1:8080/hello?name=lisi
     @RequestMapping("/hello")
@@ -63,5 +70,23 @@ public class BasicController {
             , @RequestParam(name = "age", defaultValue = "12") Integer age, User user) {
         user.setName("zhangsan");
         user.setAge(18);
+    }
+
+    @GetMapping("/test/config")
+    public String testConfig() {
+        return String.format("k1: %s, k2: %s, xiaoxuPk1: %s, xiaoxuK1: %s",
+                demoProperties.getK1(),
+                demoProperties.getK2(),
+                demoProperties.getXiaoxuPk1(),
+                demoProperties.getXiaoxuK1());
+    }
+
+    @GetMapping("/test/config/raw")
+    public String testConfigRaw() {
+        return String.format("k1: %s, k2: %s, xiaoxuPk1: %s, xiaoxuK1: %s",
+                demoProperties.getConfig().getProperty("demo.k1", null),
+                demoProperties.getConfig().getProperty("demo.k2", null),
+                demoProperties.getConfig().getProperty("demo.xiaoxu-k1", null),
+                demoProperties.getConfig().getProperty("demo.xiaoxuK1", null));
     }
 }
