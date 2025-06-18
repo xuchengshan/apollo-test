@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
+import javax.annotation.PostConstruct;
 
 @Component
 @RefreshScope
@@ -19,6 +20,7 @@ public class DemoProperties {
     @ApolloConfig
     private Config config;
 
+    @Value("demo.k1")
     private String k1;
 
     private String k2;
@@ -28,12 +30,23 @@ public class DemoProperties {
 
     private Long xiaoxuK1;
 
-    @ApolloConfigChangeListener
-    public void onConfigChange(ConfigChangeEvent changeEvent) {
-        // 当配置发生变化时，Apollo会自动更新配置值
-        // 这里不需要额外的处理，因为@ConfigurationProperties会自动处理更新
-        if (changeEvent.changedKeys().contains("demo.k1")) {
-            this.k1 = config.getProperty("demo.k1", null);
-        }
-    }
+//    @PostConstruct
+//    public void init() {
+//        System.out.println("DemoProperties 初始化完成");
+//        System.out.println("当前配置值：");
+//        System.out.println("k1: " + k1);
+//        System.out.println("k2: " + k2);
+//        System.out.println("xiaoxuPk1: " + xiaoxuPk1);
+//        System.out.println("xiaoxuK1: " + xiaoxuK1);
+//    }
+//
+//    @ApolloConfigChangeListener
+//    public void onConfigChange(ConfigChangeEvent changeEvent) {
+//        System.out.println("配置发生变更：" + changeEvent.changedKeys());
+//        for (String key : changeEvent.changedKeys()) {
+//            System.out.println("变更的配置项：" + key);
+//            System.out.println("旧值：" + changeEvent.getChange(key).getOldValue());
+//            System.out.println("新值：" + changeEvent.getChange(key).getNewValue());
+//        }
+//    }
 }
