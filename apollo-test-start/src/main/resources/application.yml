@@ -4,7 +4,7 @@ server:
 app:
   id: demo-application # 使用的 Apollo 的项目（应用）编号
 apollo:
-  meta: http://139.196.173.8:8080 # Apollo Meta Server 地址
+  meta: http://115.159.100.198:8080 # Apollo Meta Server 地址
   bootstrap:
     enabled: true # 是否开启 Apollo 配置预加载功能。默认为 false。
     eagerLoad:
@@ -15,5 +15,4 @@ apollo:
   autoUpdateInjectedSpringProperties: true # 自动更新注入的Spring属性
   refreshInterval: 1000 # 配置刷新间隔，单位毫秒
 
-end:
 
